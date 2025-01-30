@@ -17,9 +17,10 @@ public class Util {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException("Не удалось загрузить драйвер PostgreSQL", e);
         }
-
-        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
-
+    }
+    public static Connection getConnection() {
+        try {
+            return DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (SQLException e) {
             throw new RuntimeException("Ошибка подключения к базе данных", e);
         }
