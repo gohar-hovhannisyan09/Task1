@@ -17,7 +17,13 @@ public class UserDaoJDBCImpl implements UserDao {
 
     @Override
     public void createUsersTable() {
-        String sql = "CREATE TABLE IF NOT EXISTS users( id BIGSERIAL  NOT NULL,name VARCHAR(255) NOT NULL,last_name VARCHAR(255) NOT NULL,age SMALLINT NOT NULL, PRIMARY KEY (id));";
+        String sql = "CREATE TABLE IF NOT EXISTS users(" +
+                "id BIGSERIAL  NOT NULL," +
+                "name VARCHAR(255) NOT NULL," +
+                "last_name VARCHAR(255) NOT NULL," +
+                "age SMALLINT NOT NULL, " +
+                "PRIMARY KEY (id)" +
+                ");";
         try (Connection connection = Util.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
